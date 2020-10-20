@@ -6,12 +6,12 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
-const userRoutes = require('./routes/userRoutes');
+const appRoutes = require('./routes/appRoutes');
 
 const port = process.env.PORT || 3000;
 
 mongoose
-  .connect('mongodb://localhost/dogger', {
+  .connect('mongodb://localhost/suggestion-box', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //useroutes middleware
-app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/app', appRoutes);
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
